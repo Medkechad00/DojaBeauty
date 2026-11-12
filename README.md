@@ -61,7 +61,7 @@ Les anciens SVG et polices sont conservés pour préserver le travail précéden
 4. Déployer. Dès que l’adresse stable est attribuée (domaine Vercel ou domaine personnalisé), définir `SITE_URL=https://<domaine-réel>` sans chemin, puis redéployer pour générer les canonical et les images de partage. Les variables sont lues pendant le build.
 5. Après validation des contenus commerciaux, des droits photo et des mentions légales, passer `SITE_INDEXABLE=true` **en Production uniquement**, puis redéployer. Les déploiements Preview et Development restent `noindex` même si cette variable vaut `true`.
 
-Aucun secret, compte externe ni base de données n’est nécessaire au fonctionnement du site. La configuration Next.js est détectée automatiquement ; aucun `vercel.json` ni export statique n’est nécessaire. `.vercelignore` exclut les skills, références de design et rapports QA du téléversement Vercel. `.gitignore` exclut les variables locales, builds, dépendances, caches et données de liaison Vercel du dépôt.
+Aucun secret, compte externe ni base de données n’est nécessaire au fonctionnement du site. La configuration Next.js est détectée automatiquement ; aucun `vercel.json` ni export statique n’est nécessaire. `.vercelignore` exclut les skills, références de design et rapports QA du téléversement Vercel. Ces matériaux de travail sont également exclus du dépôt Git. `.gitignore` exclut les variables locales, builds, dépendances, caches et données de liaison Vercel du dépôt.
 
 Pour vérifier un déploiement accessible : définir `CHECK_URL` sur son origine HTTPS et lancer `npm run check:site`. Si Vercel protège le déploiement par authentification, utiliser la vérification locale ou un accès de test autorisé.
 
@@ -75,6 +75,6 @@ Avant lancement public : approuver définitivement les prestations, prix, durée
 
 Les pages légales partagent `src/components/legal/LegalLayout.tsx` et `src/data/legal.ts`. Les données juridiques absentes sont omises ; la liste de publication est dans `LEGAL_INFORMATION_TO_CONFIRM.md`.
 
-Les fichiers `AGENTS.md`, `DOJA_BEAUTY_PRD.md` et `skills/` sont conservés sans modification. `agentRules: false` empêche Next.js d’ajouter automatiquement ses instructions au fichier du projet. La refonte suit la dernière direction demandée par le propriétaire, éclairée par les huit images de `references/` et les skills sélectionnés. Cette direction remplace les anciennes consignes de police et de palette du PRD.
+Les fichiers de travail locaux `skills/` et `references/` ne sont pas versionnés. `agentRules: false` empêche Next.js d’ajouter automatiquement ses instructions au fichier du projet. La refonte suit la dernière direction demandée par le propriétaire. Cette direction remplace les anciennes consignes de police et de palette du PRD.
 
 L’audit npm des dépendances de production ne rapporte aucune vulnérabilité au 3 novembre 2026. L’audit complet signale 16 alertes modérées issues de `minimatch` dans les outils ESLint. Aucun correctif compatible n’est proposé pour cette chaîne de dépendances ; ne pas appliquer `npm audit fix --force`, qui propose des rétrogradations incompatibles. Réévaluer lors de la mise à jour des outils de lint.

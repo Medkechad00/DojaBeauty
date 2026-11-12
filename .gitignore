@@ -11,3 +11,5 @@ qa/
 *.log
 __pycache__/
 *.pyc
+skills/
+references/
